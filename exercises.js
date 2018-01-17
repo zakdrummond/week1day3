@@ -99,3 +99,42 @@ function makeStudentReport(data) {
 
 console.log(makeStudentReport(testData));
 
+
+// Take up to 10 minutes to write a function called enrollInSummerSchool that takes a single argument, students. students is an array of objects,
+// with each object representing a student — for example, {name: 'Tim', status: 'Current student', course: 'Biology'}.
+
+// enrollInSummerSchool should return an array of objects. 
+// For each object from the original array, it should return the original name and course, but should update the status to In Summer school. 
+
+const studentData = [
+  {
+    name: 'Tim',
+    status: 'Current student',
+    course: 'Biology',
+  },
+  {
+    name: 'Sue',
+    status: 'Withdrawn',
+    course: 'Mathematics',
+  },
+  {
+    name: 'Liz',
+    status: 'On leave',
+    course: 'Computer science',
+  },
+];
+
+function enrollInSummerSchool(students) {
+  const results = [];
+  for (let i = 0; i < students.length; i++) {
+    const student = students[i];
+    results.push({
+      name: student.name,
+      status: "In Summer school",
+      course: student.course
+    })
+  }
+  return results;
+}
+
+console.log(enrollInSummerSchool(studentData));
