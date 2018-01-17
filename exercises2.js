@@ -6,32 +6,43 @@
 
 'use strict';
 
-const loaf = {
-  flour: 300,
-  water: 210,
-  hydration: function() {
-    return (this.water / this.flour) * 100;
-  }
+// const loaf = {
+//   flour: 300,
+//   water: 210,
+//   hydration: function() {
+//     return (this.water / this.flour) * 100;
+//   }
+// };
+
+// console.log(loaf.hydration());
+
+// // Create an object with five properties: foo, bar, fum, quux, and spam. Give each property a unique value of your choosing.
+// // Loop over the object using for ... in
+// // Use console.log to show each property name and its associated value.
+
+// const myObj = {
+//   foo: 1,
+//   bar: 2,
+//   fum: 3,
+//   quux: 4,
+//   spam: 5
+// };
+
+// function loop(obj) {
+//   for (const key in obj) {
+//     console.log(`${key}: ${obj[key]}`);
+//   }
+// }
+
+// loop(myObj);
+
+// Create an object with a property called meals which is an array of strings: 'breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper'.
+// Use console.log to show the name of a hobbit's fourth meal of the day.
+// Don't forget that humans and hobbits count from 1, but computers count from 0.
+
+const hobbitMeals = {
+  meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
 };
 
-console.log(loaf.hydration());
+console.log(hobbitMeals.meals[3]);
 
-// Create an object with five properties: foo, bar, fum, quux, and spam. Give each property a unique value of your choosing.
-// Loop over the object using for ... in
-// Use console.log to show each property name and its associated value.
-
-const myObj = {
-  foo: 1,
-  bar: 2,
-  fum: 3,
-  quux: 4,
-  spam: 5
-};
-
-function loop(obj) {
-  for (const key in obj) {
-    console.log(`${key}: ${obj[key]}`);
-  }
-}
-
-loop(myObj);
