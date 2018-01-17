@@ -53,38 +53,71 @@
 
 
 
-const myArray = [
-  {
-    name: 'Chris',
-    jobTitle: 'Unemployed'
-  },
-  {
-    name: 'Zak',
-    jobTitle: 'Bartender',
-    boss: 'Chris'
-  },
-  {
-    name: 'Cody',
-    jobTitle: 'Teacher',
-    boss: 'Chris'
-  }
-];
+// const myArray = [
+//   {
+//     name: 'Chris',
+//     jobTitle: 'Unemployed'
+//   },
+//   {
+//     name: 'Zak',
+//     jobTitle: 'Bartender',
+//     boss: 'Chris'
+//   },
+//   {
+//     name: 'Cody',
+//     jobTitle: 'Teacher',
+//     boss: 'Chris'
+//   }
+// ];
 
-function loop(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let person = arr[i];
-    if (person.boss) {
-      console.log(`${person.jobTitle} ${person.name} reports to ${person.boss}.`);
-    }
-    else {
-      console.log(`${person.jobTitle} ${person.name} doesn't report to anybody.`);
-    }
-  }
-}
+// function loop(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     let person = arr[i];
+//     if (person.boss) {
+//       console.log(`${person.jobTitle} ${person.name} reports to ${person.boss}.`);
+//     }
+//     else {
+//       console.log(`${person.jobTitle} ${person.name} doesn't report to anybody.`);
+//     }
+//   }
+// }
 
-loop(myArray);
+// loop(myArray);
 
 // Expand on the previous example by adding a boss property to everyone except the owner of the company.
 // Change the iteration to print out messages in this format: "${title} ${name} reports to ${boss}.". For example: Junior Engineer Bob reports to Fred..
 // What gets printed out for the owner?
 // Adjust the message so that people with no boss display "${title} ${name} doesn't report to anybody." - for example, Founder John doesn't report to anybody.
+
+
+// Redo your Cracking the Code problem from String Drills but this time use an object as your cipher.
+// Additionally, instead of having the function accept a single word, have the function accept a single string of words, and then return the fully decoded message.
+
+let code = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4
+};
+
+let myString = 'craft block argon meter bells brown croon droop';
+
+function myFunc(str, code) {
+  let decoded = '';
+  let words = str.split(' ');
+  for (let i = 0; i < words.length; i++) {
+    let word = words[i];
+    let letter = word[0];
+    let number = code[letter];
+    if (number) {
+      decoded += word[number];
+    } else {
+      decoded += ' ';
+    }
+    
+  }
+  console.log(decoded);
+  return decoded;
+}
+
+myFunc(myString, code);
