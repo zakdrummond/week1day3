@@ -82,59 +82,115 @@
 // For each item in data, return a string that looks like this: '[name]: [grade]'. 
 // The name and grade values on the student object should be substituted in.
 
-const testData = [
-  { name: 'Jane Doe', grade: 'A' },
-  { name: 'John Dough', grade: 'B' },
-  { name: 'Jill Do', grade: 'A' },
+// const testData = [
+//   { name: 'Jane Doe', grade: 'A' },
+//   { name: 'John Dough', grade: 'B' },
+//   { name: 'Jill Do', grade: 'A' },
+// ];
+
+
+// function makeStudentReport(data) {
+//   const students = [];
+//   for (let i = 0; i < data.length; i++) {
+//     students.push(`${data[i].name}: ${data[i].grade}`);
+//   }
+//   return students;
+// }
+
+// console.log(makeStudentReport(testData));
+
+
+// // Take up to 10 minutes to write a function called enrollInSummerSchool that takes a single argument, students. students is an array of objects,
+// // with each object representing a student — for example, {name: 'Tim', status: 'Current student', course: 'Biology'}.
+
+// // enrollInSummerSchool should return an array of objects. 
+// // For each object from the original array, it should return the original name and course, but should update the status to In Summer school. 
+
+// const studentData = [
+//   {
+//     name: 'Tim',
+//     status: 'Current student',
+//     course: 'Biology',
+//   },
+//   {
+//     name: 'Sue',
+//     status: 'Withdrawn',
+//     course: 'Mathematics',
+//   },
+//   {
+//     name: 'Liz',
+//     status: 'On leave',
+//     course: 'Computer science',
+//   },
+// ];
+
+// function enrollInSummerSchool(students) {
+//   const results = [];
+//   for (let i = 0; i < students.length; i++) {
+//     const student = students[i];
+//     results.push({
+//       name: student.name,
+//       status: "In Summer school",
+//       course: student.course
+//     })
+//   }
+//   return results;
+// }
+
+// console.log(enrollInSummerSchool(studentData));
+
+// Spend up to 15 minutes writing a function called findById. 
+// This function takes 2 arguments, items and idNum. 
+// items is an array of objects. 
+// idNum is the id we're trying to find in items. 
+// The function should look for an item with the id idNum in the array items. 
+// If found, it should return that item.
+
+// you can pass in `scratchData` to test out `findByid`
+// your function
+const scratchData = [
+  { id: 22, foo: 'bar' },
+  { id: 28, foo: 'bizz' },
+  { id: 19, foo: 'bazz' },
 ];
 
-
-function makeStudentReport(data) {
-  const students = [];
-  for (let i = 0; i < data.length; i++) {
-    students.push(`${data[i].name}: ${data[i].grade}`);
-  }
-  return students;
+function findById(items, idNum) {
+  return items.find(function(element) { 
+    if (element.id === idNum) {
+      return element;
+    }
+  });
 }
 
-console.log(makeStudentReport(testData));
+
+console.log(findById(scratchData, 22));
 
 
-// Take up to 10 minutes to write a function called enrollInSummerSchool that takes a single argument, students. students is an array of objects,
-// with each object representing a student — for example, {name: 'Tim', status: 'Current student', course: 'Biology'}.
 
-// enrollInSummerSchool should return an array of objects. 
-// For each object from the original array, it should return the original name and course, but should update the status to In Summer school. 
-
-const studentData = [
-  {
-    name: 'Tim',
-    status: 'Current student',
-    course: 'Biology',
-  },
-  {
-    name: 'Sue',
-    status: 'Withdrawn',
-    course: 'Mathematics',
-  },
-  {
-    name: 'Liz',
-    status: 'On leave',
-    course: 'Computer science',
-  },
-];
-
-function enrollInSummerSchool(students) {
-  const results = [];
-  for (let i = 0; i < students.length; i++) {
-    const student = students[i];
-    results.push({
-      name: student.name,
-      status: "In Summer school",
-      course: student.course
-    })
+function testIt() {
+  const testData = [
+    { id: 1, foo: 'bar' },
+    { id: 2, foo: 'bizz' },
+    { id: 3, bang: 'boo' },
+  ];
+  const result = findById(testData, 3);
+  if (!(result && result !== null && typeof result === 'object')) {
+    console.error('`findById` must return an object');
+    return;
   }
-  return results;
+  if (result.id !== 3) {
+    console.error(
+      'Asked for item with id of `3` but got back one with id of ' + result.id
+    );
+    return;
+  }
+  if (result.bang !== 'boo') {
+    console.error(
+      'Expected all key/value pairs from target object to be returned'
+    );
+    return;
+  }
+  console.log('SUCCESS: `findByid` is working');
 }
 
-console.log(enrollInSummerSchool(studentData));
+testIt();
