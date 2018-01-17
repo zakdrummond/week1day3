@@ -93,31 +93,123 @@
 // Redo your Cracking the Code problem from String Drills but this time use an object as your cipher.
 // Additionally, instead of having the function accept a single word, have the function accept a single string of words, and then return the fully decoded message.
 
-let code = {
-  a: 1,
-  b: 2,
-  c: 3,
-  d: 4
-};
+// let code = {
+//   a: 1,
+//   b: 2,
+//   c: 3,
+//   d: 4
+// };
 
-let myString = 'craft block argon meter bells brown croon droop';
+// let myString = 'craft block argon meter bells brown croon droop';
 
-function myFunc(str, code) {
-  let decoded = '';
-  let words = str.split(' ');
-  for (let i = 0; i < words.length; i++) {
-    let word = words[i];
-    let letter = word[0];
-    let number = code[letter];
-    if (number) {
-      decoded += word[number];
-    } else {
-      decoded += ' ';
-    }
+// function myFunc(str, code) {
+//   let decoded = '';
+//   let words = str.split(' ');
+//   for (let i = 0; i < words.length; i++) {
+//     let word = words[i];
+//     let letter = word[0];
+//     let number = code[letter];
+//     if (number) {
+//       decoded += word[number];
+//     } else {
+//       decoded += ' ';
+//     }
     
-  }
-  console.log(decoded);
-  return decoded;
+//   }
+//   console.log(decoded);
+//   return decoded;
+// }
+
+// myFunc(myString, code);
+
+// Write a factory function called createCharacter (review in this assignment) that could appropriately build characters from LOTR that have the following attributes:
+// ===============================================================================================
+// | Name                      | Nickname    | Race       | Origin         | Attack   | Defense  |
+// -----------------------------------------------------------------------------------------------
+// | Gandalf the White         | gandalf     | Wizard     | Middle Earth   | 10       | 6        |
+// -----------------------------------------------------------------------------------------------
+// | Bilbo Baggins             | bilbo       | Hobbit     | The Shire      | 2        | 1        |
+// -----------------------------------------------------------------------------------------------
+// | Frodo Baggins             | frodo       | Hobbit     | The Shire      | 3        | 2        |
+// -----------------------------------------------------------------------------------------------
+// | Aragorn son of Arathorn   | aragorn     | Man        | Dunnedain      | 6        | 8        |
+// -----------------------------------------------------------------------------------------------
+// | Legolas                   | legolas     | Elf        | Woodland Realm | 8        | 5        |
+// -----------------------------------------------------------------------------------------------
+// Each character should have the method describe which takes no parameters and prints out the string: "{name} is a {race} from {origin}."
+
+// Each character should also have a method called evaluateFight 
+// that takes in a character object and returns the following string: "Your opponent takes {x} damage and you receive {y} damage" 
+// where x and y are the differences between each characters attack and defense values. If defense exceeds attack, then take zero damage.
+
+// Using array literal syntax, create an array characters that calls your factory function for each character in the table above with the relevant parameters. 
+// Your characters array should now have 5 objects in it.
+
+// Add a new character to characters (make up any attributes not provided):
+
+// Arwen Undomiel is a Half-Elf of Rivendell
+// Using the .find() function, retrieve your character nicknamed aragorn from characters and then call his describe method.
+
+// Using the .filter() function, create a new array from characters that ONLY contains characters of the race Hobbit.
+
+// Using the .filter() function, create a new array from characters that ONLY contains characters with attack value above 5.
+
+// What if you wanted to equip a weapon for each character and change how they are described? For example:
+
+// Gandolf the White is a Wizard of the Middle Earth who uses a wizard staff
+// Bilbo Baggings is a Hobbit of the Shire who uses the Ring
+// Frodo ... String and Barrow Blade
+// Aragon .... Anduril
+// Legolas ... Bow and Arrow
+// Arwen .... Hadhafang
+// How would you change the factory function and other methods?
+
+const characters = [];
+
+function createCharacter(name, nickname, race, origin, attack, defense, weapon) {
+  const character = {
+    name,
+    nickname,
+    race,
+    origin,
+    attack,
+    defense,
+    describe: function() {
+      console.log(`${this.name} is a ${this.race} from ${origin} who use a ${weapon}.`);
+    },
+    evaluateFight: function(character) {
+      console.log(`Your opponent takes ${x} games and you receive ${y} damage`);
+    },
+    weapon
+  };
+  return character;
 }
 
-myFunc(myString, code);
+characters.push(createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6, 'wizard staff'));
+characters.push(createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1, 'the Ring'));
+characters.push(createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2, 'String and Barrow Blade'));
+characters.push(createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8, 'Anduril'));
+characters.push(createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5, 'Bow and Arrow'));
+
+characters.push(createCharacter('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 5, 4, 'Hadhafang'));
+
+characters.find(function(obj) {
+  if (obj.nickname === 'aragorn') {
+    obj.describe();
+  } 
+}
+);
+
+console.log(characters.filter(function(obj) {
+  if (obj.race === 'Hobbit') {
+    return obj;
+  }
+}));
+
+console.log(characters.filter(function(obj) {
+  if (obj.attack > 5) {
+    return obj;
+  }
+}));
+
+characters[0].describe();
