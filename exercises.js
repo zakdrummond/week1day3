@@ -38,3 +38,21 @@ function updateObject(obj) {
 }
 
 console.log(updateObject(myObj));
+
+
+// Modify personMaker.fullName to be a function that uses self-reference (via this) in order to return the firstName and lastName properties separated by a space.
+
+// So, for instance, if firstName was 'Jane' and lastName was 'Doe', fullName() should return 'Jane Doe'.
+
+function personMaker() {
+  var person = {
+    firstName: 'Paul',  
+    lastName: 'Jones'
+    fullName: function() {
+      return `${this.firstName} ${this.lastName}`
+    },
+  };
+  return person;
+}
+
+console.log(personMaker());
